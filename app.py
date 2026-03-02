@@ -29,6 +29,22 @@ section[data-testid="stSidebar"] {
     -webkit-backdrop-filter: blur(12px);
     border-right: 1px solid rgba(255,255,255,0.3);
 }
+/* Outer container */
+div[data-baseweb="input"] > div {
+    background: rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    transition: all 0.3s ease;
+}
+/* Actual typing text */
+div[data-baseweb="input"] input {
+    color: #222222 !important;   /* Dark text */
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
 
 /* Make sidebar content transparent */
 section[data-testid="stSidebar"] > div {
@@ -50,20 +66,179 @@ section[data-testid="stSidebar"] > div {
 st.markdown("""
 <style>
 
-div[data-baseweb="input"] > div {
-    background: rgba(255, 255, 255, 0.15) !important;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border-radius: 12px;
+/* Remove default white background */
+div[data-baseweb="input"] {
+    background: transparent !important;
 }
 
-input {
-    color: white !important;
+/* Glass container */
+div[data-baseweb="input"] > div {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Actual typing area */
+div[data-baseweb="input"] input {
+    background: transparent !important;
+    color: #222 !important;
+    font-size: 16px !important;
+    font-weight: 500;
+}
+
+/* Placeholder */
+div[data-baseweb="input"] input::placeholder {
+    color: rgba(50, 50, 50, 0.6) !important;
+}
+
+/* Focus effect */
+div[data-baseweb="input"]:focus-within > div {
+    border: 1px solid rgba(255, 140, 100, 0.9) !important;
+    box-shadow: 0 0 12px rgba(255, 140, 100, 0.4);
+    transform: scale(1.02);
 }
 
 </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<style>
+
+/* ===== Result Card ===== */
+.result-card {
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.35);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    margin-top: 20px;
+}
+
+/* Title */
+.result-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Predicted Class */
+.class-glaucoma {
+    color: #c0392b;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.class-normal {
+    color: #27ae60;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+/* Confidence Badge */
+.confidence {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 30px;
+    background: rgba(0,0,0,0.08);
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+/* Suggestion box */
+.suggestion-box {
+    margin-top: 18px;
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.25);
+    border-left: 5px solid #e67e22;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<style>
+
+/* Target only primary button */
+div.stButton > button {
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 12px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 6px 18px rgba(255, 94, 98, 0.4);
+}
+
+/* Hover effect */
+div.stButton > button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 10px 25px rgba(255, 94, 98, 0.6);
+    background: linear-gradient(135deg, #ff5e62, #ff9966);
+}
+
+/* Click effect */
+div.stButton > button:active {
+    transform: scale(0.97);
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+
+st.markdown("""
+<style>
+
+/* Main uploader container */
+section[data-testid="stFileUploader"] {
+    background: linear-gradient(135deg, rgba(255,153,102,0.25), rgba(255,94,98,0.25));
+    border: 2px dashed rgba(255,94,98,0.6);
+    border-radius: 18px;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(8px);
+}
+
+/* Hover animation */
+section[data-testid="stFileUploader"]:hover {
+    transform: scale(1.02);
+    border-color: #ff5e62;
+    box-shadow: 0 8px 25px rgba(255,94,98,0.3);
+}
+
+/* Browse button styling */
+section[data-testid="stFileUploader"] button {
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    color: white;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+section[data-testid="stFileUploader"] button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(255,94,98,0.4);
+}
+
+/* File name after upload */
+section[data-testid="stFileUploader"] span {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 class_names = ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
@@ -81,13 +256,57 @@ def load_model():
 model = load_model()
 
 
-st.title("Retinal Disease Classification (EfficientNetV2B3)")
+st.title("👁 RetinaDetect AI")
+st.header("AI-Based Retinal Disease Detection System")
+st.subheader("EfficientNetV2B3")
+
+# Sidebar - Eye Care Tips
+st.sidebar.markdown("## 👁️ Eye Care Tips")
+
+st.sidebar.markdown("""
+- Wear UV-protective sunglasses outdoors.  
+- Maintain proper lighting and avoid screen glare.  
+- Blink frequently and stay hydrated to prevent dry eyes.  
+- Eat vitamin-rich foods that support retinal health.  
+- Get regular comprehensive eye checkups for early disease detection.
+""")
+
 with st.sidebar.expander("Model Details"):
     st.markdown("### **EfficientNetV2B3**")
     st.write("Input Shape:", model.input_shape)
     st.write("Output Shape:", model.output_shape)
     st.write("Total Parameters:", f"{model.count_params():,}")
     st.write("Classes:", class_names)
+    
+with st.sidebar:
+    with st.expander("About", expanded=False):
+        st.markdown("*Jubayer Hossian*")
+        st.markdown(" Computer Science & Engineering")
+        st.markdown("Daffodil International University")
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.markdown("[📧](mailto:jubayerhossain.cse@gmail.com)")
+        
+        with col2:
+            st.markdown("[💼](https://www.linkedin.com/in/jubayer-hossain-628b92292/)")
+        
+        with col3:
+            st.markdown("[💻](https://github.com/jubayer-04)")
+        st.markdown("---")
+        st.markdown("*Nazia Sultana Marjan*")
+        st.markdown(" Computer Science & Engineering")
+        st.markdown("Daffodil International University")
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.markdown("[📧](mailto:marjan22205101802@diu.edu.bd)")
+        
+        with col2:
+            st.markdown("[💼](https://www.linkedin.com/in/naziasultana1436/)")
+        
+        with col3:
+            st.markdown("[💻](https://github.com/marjan18)")
     
 st.write("All classes are: ", class_names)
 
@@ -112,7 +331,7 @@ patient_name = st.text_input("", placeholder = "Enter patient name here....")
 age = st.text_input("", placeholder = "Enter patient age here....")
 gender = st.radio(
     "**Select Gender:**",
-    ["**Male**", "**Female**"]
+    ["Male", "Female"]
 )
 
 uploaded_file = st.file_uploader("Upload Fundus Retinal Image", type=["jpg", "png", "jpeg"])
@@ -253,6 +472,26 @@ caption_style = ParagraphStyle(
 from zoneinfo import ZoneInfo
 
 report_date = datetime.now(ZoneInfo("Asia/Dhaka")).strftime("%d %B %Y, %I:%M %p")
+from reportlab.lib.units import inch
+from reportlab.lib import colors
+
+def add_watermark(canvas, doc):
+    canvas.saveState()
+
+    watermark_text = "@RetinaDetect AI"
+
+    # Font styling
+    canvas.setFont("Helvetica-Oblique", 9)
+    canvas.setFillColor(colors.grey)
+
+    # Bottom-right corner positioning
+    page_width, page_height = doc.pagesize
+    x = page_width - 0.5 * inch
+    y = 0.4 * inch
+
+    canvas.drawRightString(x, y, watermark_text)
+
+    canvas.restoreState()
 
 def generate_pdf(predicted_class, confidence, image_path, patient_name, age, report_date, gender):
 
@@ -267,7 +506,9 @@ def generate_pdf(predicted_class, confidence, image_path, patient_name, age, rep
 
     styles = getSampleStyleSheet()
 
-    elements.append(Paragraph("Retinal Disease Classification Report", styles["Heading1"]))
+    elements.append(Paragraph("👁 RetinaDetect AI", styles["Heading1"]))
+    elements.append(Spacer(1, 0.2 * inch))
+    elements.append(Paragraph("AI-Based Retinal Disease Detection System", styles["Heading2"]))
     elements.append(Spacer(1, 0.3 * inch))
 
     elements.append(Paragraph(f"<b>Patient Name:</b> {patient_name}", styles["Normal"]))
@@ -292,8 +533,12 @@ def generate_pdf(predicted_class, confidence, image_path, patient_name, age, rep
     caption_style
 ))
     elements.append(Paragraph("Disclaimer: This result is AI-assisted and not a medical diagnosis. Please consult a qualified doctor for confirmation. Remember Ai can make mistakes... So, Don't trust it blindly....", styles["Heading3"]))
-
-    doc.build(elements)
+    
+    doc.build(
+    elements,
+    onFirstPage=add_watermark,
+    onLaterPages=add_watermark
+)
 
     return pdf_path
 # ------------------ After Prediction ------------------
@@ -322,13 +567,21 @@ if "predicted_class" in st.session_state:
 
         st.session_state["pdf_file"] = pdf_file
 
-    with open(st.session_state["pdf_file"], "rb") as f:
-        st.download_button(
-            label="Download Report as PDF",
-            data=f,
-            file_name=f"{patient_name}_report.pdf",
-            mime="application/pdf"
-        )
+    is_valid = patient_name.strip() != "" and age.strip() != ""
+
+    if not is_valid:
+        st.warning("Name and age are required to download the report.")
+    
+    elif "pdf_file" in st.session_state:
+        with open(st.session_state["pdf_file"], "rb") as f:
+            st.download_button(
+                label="Download Report as PDF",
+                data=f,
+                file_name=f"{patient_name}_report.pdf",
+                mime="application/pdf"
+            )
+    else:
+        st.warning("Generate the report first.")
 
 
 from datetime import datetime
@@ -336,130 +589,13 @@ current_year = datetime.now().year
 
 st.markdown(f"""
 <div style="text-align:center; padding:15px; background-color:#e9ecef;">
-    <strong>Retinal Disease Classification System</strong><br>
+    <strong>👁 RetinaDetect AI</strong><br>
     Developed by Jubayer Hossain & Nazia Sultana Marjan<br>
-    Department of Computer Science & Engineering<br>
-    Daffodil International University<br>
-    Contact:
-    <a href="mailto:jubayerhossain.cse@gmail.com">
-        jubayerhossain.cse@gmail.com
-    </a> |
-    <a href="mailto:marjan22205101802@diu.edu.bd">
-        marjan22205101802@diu.edu.bd
-    </a><br>
     © {current_year} Jubayer & Nazia
 </div>
 """, unsafe_allow_html=True)
 
 st.markdown("<br><br><br><br>", unsafe_allow_html=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
